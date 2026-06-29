@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "newrelic": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "-p", "@kavinga/commerce-tools", "newrelic-mcp"],
+      "env": {
+        "NEW_RELIC_API_KEY": "your-key",
+        "NEW_RELIC_REGION": "us"
+      }
+    }
+  }
+}
