@@ -1,0 +1,14 @@
+{
+  "name": "commerce-tools",
+  "owner": {
+    "name": "B G Kavinga"
+  },
+  "plugins": [
+    {
+      "name": "commerce-tools",
+      "description": "A plugin for managing commerce tools",
+      "version": "1.0.0",
+      "path": "plugins/claude"
+    }
+  ]
+}
