@@ -5,7 +5,7 @@
   },
   "plugins": [
     {
-      "name": "Adobe Commerce Tools",
+      "name": "adobe-commerce-tools",
       "description": "A plugin for managing Adobe Commerce tools",
       "version": "1.0.0",
       "source": "./plugins/cursor"
