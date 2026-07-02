@@ -8,7 +8,7 @@
       "name": "Adobe Commerce Tools",
       "description": "A plugin for managing Adobe Commerce tools",
       "version": "1.0.0",
-      "source": "./plugins/claude"
+      "source": "./plugins/cursor"
     }
   ]
 }
