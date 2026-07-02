@@ -1,6 +1,6 @@
 {
   "name": "@kavinga/commerce-tools",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Multi-provider AI tooling platform with MCPs, agents, skills, and commands",
   "type": "module",
   "bin": {
@@ -10,7 +10,8 @@
     "dist/"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run build:plugin:cursor",
+    "build:plugin:cursor": "tsx plugins/cursor/build.ts",
     "dev:newrelic": "tsx mcps/newrelic/server.ts",
     "start:newrelic": "node dist/mcps/newrelic/server.js"
   },

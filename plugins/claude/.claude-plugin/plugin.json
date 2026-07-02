@@ -1,0 +1,8 @@
+{
+  "name": "commerce-tools",
+  "description": "A plugin for managing commerce tools",
+  "version": "1.0.0",
+  "author": {
+    "name": "B G Kavinga"
+  }
+}
