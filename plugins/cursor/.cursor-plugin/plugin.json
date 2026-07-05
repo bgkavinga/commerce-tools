@@ -1,7 +1,7 @@
 {
   "name": "adobe-commerce-tools",
   "description": "New Relic observability and security analysis for Adobe Commerce: NRQL skill, security-analyst agent, /nrql command, and MCP server.",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": {
     "name": "B G Kavinga"
   }

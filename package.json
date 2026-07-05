@@ -1,6 +1,6 @@
 {
   "name": "@kavinga/commerce-tools",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Multi-provider AI tooling platform with MCPs, agents, skills, and commands",
   "type": "module",
   "bin": {
@@ -27,5 +27,8 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
