@@ -1,6 +1,6 @@
 {
   "name": "@kavinga/commerce-tools",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Multi-provider AI tooling platform with MCPs, agents, skills, and commands",
   "type": "module",
   "bin": {
@@ -16,7 +16,8 @@
     "dev:newrelic": "tsx mcps/newrelic/server.ts",
     "start:newrelic": "node dist/mcps/newrelic/server.js",
     "dev:jira": "tsx mcps/jira/server.ts",
-    "start:jira": "node dist/mcps/jira/server.js"
+    "start:jira": "node dist/mcps/jira/server.js",
+    "release": "scripts/release.sh"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1",
