@@ -171,6 +171,12 @@ npx tsc --watch
 npx tsc --noEmit
 ```
 
+## Deep Agent Chat App
+
+A separate web-based AI agent application (built on LangGraph Deep Agents) is available in the `deep-agent/` subfolder. It provides a multi-provider LLM chat interface with built-in New Relic and Jira integration, deployable as a single Docker container.
+
+See [`deep-agent/README.md`](deep-agent/README.md) for details.
+
 ## License
 
 MIT

@@ -1,19 +1,14 @@
 node_modules/
 dist/
+.git/
+.gitignore
 .env
-*.js.map
-LINKEDIN_ARTICLE.md
-
-# Deep agent Python environment
+.env.local
+*.md
 deep-agent/backend/.venv/
 deep-agent/backend/__pycache__/
-deep-agent/backend/*.egg-info/
-
-# Deep agent frontend build
 deep-agent/frontend/node_modules/
 deep-agent/frontend/dist/
-
-# Python
 *.pyc
 .pytest_cache/
 .mypy_cache/

@@ -1,0 +1,79 @@
+.tool-activity {
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.tool-call {
+  background: #f0f4ff;
+  border-left: 3px solid #667eea;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tool-call {
+    background: #1a1a3e;
+    border-left-color: #667eea;
+  }
+}
+
+.tool-result {
+  background: #f5f5f5;
+  border-left: 3px solid #4caf50;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tool-result {
+    background: #1a1a1a;
+    border-left-color: #4caf50;
+  }
+}
+
+.tool-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.tool-icon {
+  font-size: 1.1rem;
+}
+
+.tool-details {
+  margin-top: 0.5rem;
+}
+
+.tool-details summary {
+  cursor: pointer;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  user-select: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tool-details summary {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.tool-args,
+.tool-result {
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.85rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tool-args,
+  .tool-result {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}

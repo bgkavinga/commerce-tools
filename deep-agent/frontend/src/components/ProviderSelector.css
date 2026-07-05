@@ -1,0 +1,27 @@
+.provider-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.provider-option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.provider-option:hover {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.provider-option input[type="radio"] {
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.provider-label {
+  font-size: 0.95rem;
+}
