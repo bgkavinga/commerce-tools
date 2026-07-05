@@ -132,4 +132,4 @@ npx tsc --noEmit
 
 ## License
 
-Private — Adobe internal tooling.
+MIT
