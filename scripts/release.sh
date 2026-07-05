@@ -15,20 +15,18 @@ fi
 
 BUMP="$1"
 
-if [[ -n "$(git status --porcelain)" ]]; then
-  echo "Error: working tree is not clean. Commit or stash changes first." >&2
-  exit 1
-fi
-
 CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 if [[ "$CURRENT_BRANCH" != "main" ]]; then
   echo "Error: releases must be cut from 'main' (currently on '$CURRENT_BRANCH')." >&2
   exit 1
 fi
 
+# Local commits ahead of origin/main (and uncommitted changes) are fine — they'll
+# be pushed along with the release commit and tag. What we can't allow is local
+# main missing commits that origin has, since that push would be rejected.
 git fetch origin main
-if [[ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]]; then
-  echo "Error: local main is not up to date with origin/main." >&2
+if ! git merge-base --is-ancestor origin/main HEAD; then
+  echo "Error: local main has diverged from or is behind origin/main. Pull/rebase first." >&2
   exit 1
 fi
 
