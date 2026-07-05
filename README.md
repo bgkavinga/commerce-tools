@@ -1,3 +1,14 @@
+---
+title: Commerce Tools
+emoji: 🛠️
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+app_file: deep-agent/Dockerfile
+pinned: false
+license: mit
+---
+
 # commerce-tools
 
 A modular AI tooling platform for Adobe Commerce operations, monitoring, and security analysis. Provides New Relic and Jira MCP servers, plus a composable framework of agents, skills, commands, and providers for building AI-powered Commerce workflows.
