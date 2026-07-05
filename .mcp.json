@@ -8,6 +8,16 @@
         "NEW_RELIC_API_KEY": "your-key",
         "NEW_RELIC_REGION": "us"
       }
+    },
+    "jira": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "--package", "@kavinga/commerce-tools", "jira-mcp"],
+      "env": {
+        "JIRA_BASE_URL": "https://yourcompany.atlassian.net",
+        "JIRA_EMAIL": "your-email@example.com",
+        "JIRA_API_TOKEN": "your-api-token"
+      }
     }
   }
 }

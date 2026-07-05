@@ -13,6 +13,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { commercePrompt } from '../mcps/newrelic/prompts/commerce.js';
 import { securityAgentPrompt } from '../mcps/newrelic/prompts/security.js';
+import { jiraWorkflowPrompt } from '../mcps/jira/prompts/workflow.js';
 
 const pluginsDir = dirname(fileURLToPath(import.meta.url));
 const repoRoot = join(pluginsDir, '..');
@@ -24,7 +25,7 @@ const rootMcp = JSON.parse(readFileSync(join(repoRoot, '.mcp.json'), 'utf8'));
 // .cursor-plugin/marketplace.json at the repo root.
 const PLUGIN_NAME = 'adobe-commerce-tools';
 const PLUGIN_DESCRIPTION =
-  'New Relic observability and security analysis for Adobe Commerce: NRQL skill, security-analyst agent, /nrql command, and MCP server.';
+  'New Relic observability and security analysis for Adobe Commerce, plus Jira ticket triage: NRQL skill, security-analyst agent, Jira-to-New-Relic triage skill, /nrql and /work-on-ticket commands, and MCP servers.';
 const PLUGIN_AUTHOR = 'B G Kavinga';
 
 const GENERATED_NOTICE =
@@ -86,6 +87,39 @@ const commandMd = markdownFile(
   ].join('\n'),
 );
 
+// Skill: model-invoked reference knowledge for the Jira-to-New-Relic triage
+// workflow. The description states when to use it so the host agent
+// triggers it reliably on ticket-key mentions or "work on"/"investigate" phrasing.
+const jiraSkillMd = markdownFile(
+  {
+    name: 'jira-newrelic-triage',
+    description:
+      'Use when the user asks to work on, investigate, or triage a Jira ticket (e.g. "work on jira ticket PRO-234", a ticket key like PRO-234, JIRA-123) that may need New Relic investigation. Fetches the ticket, extracts a New Relic account/project id from its text, asks the user if none is found, then investigates with the New Relic MCP tools.',
+  },
+  jiraWorkflowPrompt,
+);
+
+// Command: explicit user-triggered entry point for the Jira ticket key.
+const workOnTicketMd = markdownFile(
+  {
+    name: 'work-on-ticket',
+    description: 'Fetch a Jira ticket and investigate it with New Relic.',
+  },
+  [
+    'Work on the Jira ticket below.',
+    '',
+    '1. Call `get_jira_issue` with this issue key.',
+    '2. Check the `extractedIds` field. If empty, ask the user for a New Relic account ID or project ID before continuing.',
+    "3. Resolve the account (via `get_account_id_by_project_id` if needed) and investigate with `execute_nrql`, following the `newrelic-commerce` skill's field-discovery rules.",
+    '4. Summarize findings, referencing the ticket key and summary.',
+    '',
+    'For the full workflow, invoke the `jira-newrelic-triage` skill.',
+    '',
+    'Ticket key:',
+    '$ARGUMENTS',
+  ].join('\n'),
+);
+
 // Take command/args from the root .mcp.json but always emit env-var
 // interpolation so installed plugins read the user's environment instead of
 // the repo's placeholder values.
@@ -97,6 +131,14 @@ const mcpJson = `${JSON.stringify(
         env: {
           NEW_RELIC_API_KEY: '${NEW_RELIC_API_KEY}',
           NEW_RELIC_REGION: '${NEW_RELIC_REGION:-us}',
+        },
+      },
+      jira: {
+        ...rootMcp.mcpServers.jira,
+        env: {
+          JIRA_BASE_URL: '${JIRA_BASE_URL}',
+          JIRA_EMAIL: '${JIRA_EMAIL}',
+          JIRA_API_TOKEN: '${JIRA_API_TOKEN}',
         },
       },
     },
@@ -125,6 +167,8 @@ for (const target of targets) {
   writeGenerated(target.dir, 'skills/newrelic-commerce/SKILL.md', skillMd);
   writeGenerated(target.dir, 'agents/newrelic-security.md', agentMd);
   writeGenerated(target.dir, 'commands/nrql.md', commandMd);
+  writeGenerated(target.dir, 'skills/jira-newrelic-triage/SKILL.md', jiraSkillMd);
+  writeGenerated(target.dir, 'commands/work-on-ticket.md', workOnTicketMd);
   writeGenerated(target.dir, target.mcpPath, mcpJson);
   writeGenerated(target.dir, target.manifestPath, manifestJson);
 }

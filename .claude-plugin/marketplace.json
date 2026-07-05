@@ -6,7 +6,7 @@
   "plugins": [
     {
       "name": "adobe-commerce-tools",
-      "description": "New Relic observability and security analysis for Adobe Commerce: NRQL skill, security-analyst agent, /nrql command, and MCP server.",
+      "description": "New Relic observability and security analysis for Adobe Commerce, plus Jira ticket triage: NRQL skill, security-analyst agent, Jira-to-New-Relic triage skill, /nrql and /work-on-ticket commands, and MCP servers.",
       "version": "0.1.3",
       "source": "./plugins/claude"
     }
