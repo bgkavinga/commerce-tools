@@ -5,6 +5,7 @@ colorFrom: blue
 colorTo: indigo
 sdk: docker
 app_file: deep-agent/Dockerfile
+app_port: 8000
 pinned: false
 license: mit
 ---
