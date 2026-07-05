@@ -1,5 +1,8 @@
 {
-  "name": "commerce-tools",
-  "description": "Multi-provider AI tooling platform with MCPs, agents, skills, and commands",
-  "version": "0.1.3"
+  "name": "adobe-commerce-tools",
+  "description": "New Relic observability and security analysis for Adobe Commerce: NRQL skill, security-analyst agent, /nrql command, and MCP server.",
+  "version": "0.1.3",
+  "author": {
+    "name": "B G Kavinga"
+  }
 }

@@ -10,8 +10,8 @@
     "dist/"
   ],
   "scripts": {
-    "build": "tsc && npm run build:plugin:cursor",
-    "build:plugin:cursor": "tsx plugins/cursor/build.ts",
+    "build": "tsc && npm run build:plugins",
+    "build:plugins": "tsx plugins/build.ts",
     "dev:newrelic": "tsx mcps/newrelic/server.ts",
     "start:newrelic": "node dist/mcps/newrelic/server.js"
   },

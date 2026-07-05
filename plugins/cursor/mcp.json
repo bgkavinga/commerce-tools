@@ -3,10 +3,15 @@
     "newrelic": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "--package", "@kavinga/commerce-tools", "newrelic-mcp"],
+      "args": [
+        "-y",
+        "--package",
+        "@kavinga/commerce-tools",
+        "newrelic-mcp"
+      ],
       "env": {
-        "NEW_RELIC_API_KEY": "your-key",
-        "NEW_RELIC_REGION": "us"
+        "NEW_RELIC_API_KEY": "${NEW_RELIC_API_KEY}",
+        "NEW_RELIC_REGION": "${NEW_RELIC_REGION:-us}"
       }
     }
   }
